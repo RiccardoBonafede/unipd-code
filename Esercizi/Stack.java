@@ -1,6 +1,6 @@
 /**
-	Classe per strotture stack
-	@author Bonafede Riccardo
+ * Classe per strutture stack
+ * @author Bonafede Riccardo
 */
 	public class Stack<E>{
 		private Object[] stack;
