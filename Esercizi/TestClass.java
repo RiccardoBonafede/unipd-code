@@ -1,4 +1,9 @@
-
+/**
+ * Classe Di Test per testare algoritmi di ordinamento(sort class)
+ *
+ * @author Riccardo Bonafede
+ * @version 1.0 (finale)
+ */
 public class TestClass implements Comparable<TestClass>{
 
 	private int anElement;
@@ -20,7 +25,7 @@ public class TestClass implements Comparable<TestClass>{
 
 		}
 			
-		a=SortClass.iMergeSort(v);
+		a=SortClass.MergeSort(v);
 
 		for(int i=0;i<100;i++)
 			System.out.printf("[%2d]=>%2d\t", i, a[i].getAnElement());

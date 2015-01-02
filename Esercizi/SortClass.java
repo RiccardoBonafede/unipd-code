@@ -1,12 +1,27 @@
+/**
+ * Classe Contenente i tre algoritmi di sorting studiati a lezione.
+ * Questi sono generici, e possono esere implementati per qualsiasi classe che implementi l'interfaccia Comparable
+ */
+
+
 import java.util.Arrays;
 
 public class SortClass{
 
-	public SortClass(){
+	/**
+	 * Questo non dovrebbe mai essere invocato
+	 */
+	private SortClass(){
 		//Costruttore vuoto
 
 	}
 
+
+ 	/**
+ 	* Mette in ordine un array di dati generici usando il selection sort. O(n^2)
+ 	* @param v Array di dati generici da ordinare
+ 	* @return l'array ordinato(sarà quello vecchio)
+ 	*/
 	public static <T extends Comparable<T>> T[] selectionSort(T[] v){
 		int size=v.length;
 		int iWhile=0;
@@ -35,6 +50,11 @@ public class SortClass{
 		}
 		return v;
 	}
+	/**
+ 	* Mette in ordine un array di dati generici usando L'insertion sort. O(n^2)
+ 	* @param v Array di dati generici da ordinare
+ 	* @return l'array ordinato(sarà quello vecchio)
+ 	*/
 	public static <T extends Comparable<T>> T[] insertionSort(T[] v){
 		int size=v.length;
 
@@ -57,45 +77,12 @@ public class SortClass{
 		}
 		return v;
 	}
-	/*public static  <T extends Comparable<T>> T[] iMergeSort(T[] v){
-		int size=v.length, sSize=size, index=0; //subStringSize
-		
-		while(true){
-
-
-			while(true){
-
-					System.out.printf("[%2d %2d] [%2d %2d]\n",index, index+sSize, index+sSize, index+sSize*2);
-				T[] v1=(T[])Arrays.copyOfRange(v, index, index+sSize);
-				T[] v2=(T[])Arrays.copyOfRange(v, index+sSize, index+sSize*2);
-
-
-				
-
-				
-				index+=sSize*2;
-			}
-			for(int i=index, i1=0 , i2=0; i<sSize*2; i++){		//dichiara tre variabili: i=index di tmp, i1 =index di v1, i2=index di v2
-				//confronta gli elementi all'indice degli array, che poi sposta in tmp nella posizione del suo indice. n.b. l'indice viene poi incrementato
-
-
-					if(i1>=v1.length){
-						v[i]=v2[i2++];
-					}
-					else if(i2>=v2.length)
-						v[i]=v1[i1++];
-					else if(v1[i1].compareTo(v2[i2])<0)
-						v[i]=v1[i1++];
-					else
-						v[i]=v2[i2++];
-				}
-			sSize=2;
-			index=0;
-
-		}
-		return v;
-	}
-	*/
+	
+	/**
+ 	* Mette in ordine un array di dati generici usando il merge sort O(nlogn).
+ 	* @param v Array di dati generici da ordinare
+ 	* @return l'array ordinato(sarà quello vecchio)
+ 	*/
 	public static  <T extends Comparable<T>> T[] mergeSort(T[] v){
 		int size=v.length;
 
