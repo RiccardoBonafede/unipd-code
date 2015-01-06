@@ -85,6 +85,23 @@ public class QE extends Q{
 		}
 		return t;
 	}
+
+
+
+	public Object[] toSet(){
+		Object[] tmp=toSortedArray();
+		QE newArray=new QE(); //mi piace perchè ha complessità temporale O(1)
+		int nsize=1, ni=0;
+		
+		newArray.enqueue(tmp[0]); //Ci metto dentro un elemento
+		for(int i=1;i<tmp.length;i++){
+
+			if(!tmp[i].equals((Comparable)newArray.front())){
+				newArray.enqueue(tmp[i]);
+			}
+		}
+		return newArray.toArray();
+	}
 		
 
 
