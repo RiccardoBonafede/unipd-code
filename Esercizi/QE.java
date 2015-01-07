@@ -6,12 +6,10 @@ public class QE extends Q{
 		super(); //Chiama il metodo costruttore della classe padre. Non Obbligatorio ma buona norma metterlo.
 	}
 
-	public void enqueue(Object x){
+	public void enqueue(Comparable x){
 
-		if( x instanceof Comparable)
 			super.enqueue((Comparable)x);
-		else
-			throw new IllegalArgumentException();
+		
 
 	}
 
@@ -22,19 +20,21 @@ public class QE extends Q{
 		return sort(toArray());
 
 	}
+	public Comparable dequeue(){
+		return (Comparable)super.dequeue();
+	}
 
-	private Object[] sort(Object[] l){
+	private Object[] sort(Comparable[] t){
+		int len=t.length;
 		
-		if(!(l instanceof Comparable[]))
-			return null;
-		Comparable[] t=(Comparable[]) l;
 		if(t.length==0)
 			throw new IllegalArgumentException();
 
-		else if(t.length==1)
+		else if(len==1)
 			return t;
-		else if(t.length==2){
-			if(t[0].compareTo(t[1])>=0)
+		else if(len==2){
+			
+			if(t[0].compareTo(t[1])<=0)
 				return t;
 			else{
 				Comparable tmp=t[0];
@@ -45,7 +45,7 @@ public class QE extends Q{
 		}
 
 		Comparable[] t1=new Comparable[t.length/2];
-		Comparable[] t2=new Comparable[t.length/2+1];
+		Comparable[] t2=new Comparable[t.length/2+t.length%2];
 
 		//divido in due l'array. Mettendo un elemento in più nel secondo nel caso l'array di partenza sia dispari
 		for(int i=0;i<t.length;i++){
@@ -54,7 +54,7 @@ public class QE extends Q{
 				t1[i]=t[i];
 
 			else{
-				t2[t.length/2]=t[i];
+				t2[i-t.length/2]=t[i];
 			}
 
 		}
@@ -74,10 +74,10 @@ public class QE extends Q{
 				i2++;
 			}
 			else if(i2>=t2.length){
-
+				t[i]=t1[i1];
+				i1++;
 			}
-
-			if(t1[i1].compareTo(t2[i2]) >= 0){
+			else if(t1[i1].compareTo(t2[i2]) <= 0){
 				t[i]=t1[i1];
 				i1++;
 			}
@@ -94,14 +94,16 @@ public class QE extends Q{
 			throw new EmptyQueueException();
 		}
 
-		Object[] tmp=new Comparable[size()];
-
-		for(int i=0;i<size();i++){
-			tmp[i]=(Comparable)dequeue();
+		Comparable[] tmp=new Comparable[size()];
+		int size=size();
+		for(int i=0;i<size;i++){
+			tmp[i]=dequeue();
 		}
-		for(int i=0;i<size();i++)
-			enqueue(tmp[size()-i]);
-		return (Comparable[])tmp;
+		for(int i=0;i<size;i++){
+
+			enqueue(tmp[size-i-1]);
+		}
+		return tmp;
 
 	}
 
