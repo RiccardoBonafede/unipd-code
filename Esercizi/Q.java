@@ -43,6 +43,7 @@ public class Q implements Queue{
 			tmp[i]=queueA[i];
 
 		queueA=new Object[newSize];
+		size=newSize;
 
 		for(int i=0;i<index;i++)
 			queueA[i]=tmp[i];
@@ -72,11 +73,11 @@ public class Q implements Queue{
 			return null;
 
 		Object[] tmp=new Object[index];
-		int tmpI=index;
+		
 
 		//inverte e ritorna
-		for(int i=index;i>=0;i--){
-			tmp[index-i]=queueA[i];
+		for(int i=index;i>0;i--){
+			tmp[index-i]=queueA[i-1];
 		}
 		return tmp;
 	}

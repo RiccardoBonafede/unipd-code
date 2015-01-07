@@ -9,7 +9,7 @@ public class QE extends Q{
 	public void enqueue(Object x){
 
 		if( x instanceof Comparable)
-			super.enqueue(x);
+			super.enqueue((Comparable)x);
 		else
 			throw new IllegalArgumentException();
 
@@ -19,7 +19,7 @@ public class QE extends Q{
 		if(isEmpty())
 			return null;
 
-		return sort(toArray());
+		return sort((Comparable[])toArray());
 
 	}
 
