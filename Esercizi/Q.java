@@ -82,10 +82,4 @@ public class Q implements Queue{
 		return tmp;
 	}
 
-
-
-
-
-
-
 }

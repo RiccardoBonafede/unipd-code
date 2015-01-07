@@ -19,11 +19,14 @@ public class QE extends Q{
 		if(isEmpty())
 			return null;
 
-		return sort((Comparable[])toArray());
+		return sort(toArray());
 
 	}
 
 	private Object[] sort(Object[] l){
+		
+		if(!(l instanceof Comparable[]))
+			return null;
 		Comparable[] t=(Comparable[]) l;
 		if(t.length==0)
 			throw new IllegalArgumentException();
@@ -86,11 +89,27 @@ public class QE extends Q{
 		return t;
 	}
 
+	public Comparable[] toArray(){
+		if(isEmpty()){
+			throw new EmptyQueueException();
+		}
+
+		Object[] tmp=new Comparable[size()];
+
+		for(int i=0;i<size();i++){
+			tmp[i]=(Comparable)dequeue();
+		}
+		for(int i=0;i<size();i++)
+			enqueue(tmp[size()-i]);
+		return (Comparable[])tmp;
+
+	}
+
 
 
 	public Object[] toSet(){
 		Object[] tmp=toSortedArray();
-		QE newArray=new QE(); //mi piace perchè ha complessità temporale O(1)
+		QE newArray=new QE(); //mi piace perchè ha complessità temporale O(1) in acesso e scrittura
 		int nsize=1, ni=0;
 		
 		newArray.enqueue(tmp[0]); //Ci metto dentro un elemento
