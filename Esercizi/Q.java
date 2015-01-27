@@ -63,8 +63,9 @@ public class Q implements Queue{
 		if(isEmpty())
 			throw new EmptyQueueException("Coda Vuota");
 
-		//decrementa e poi ritorna l'oggetto. 
-		return queueA[--index];
+		//decrementa e poi ritorna l'oggetto.
+		 --index;
+		return queueA[index];
 	}
 
 	public Object[] toArray(){

@@ -14,7 +14,8 @@ public class QETester
       Object[] a = q.toArray();                    // prova del metodo toArray()
       Object[] b = q.toSortedArray();        // prova del metodo toSortedArray()
       Object[] c = q.toSet();                        // prova del metodo toSet()  
-      
+      /*Object b[]={1,2,3,5,6,7,8};
+      Object c[]={1,2,4,5,6,7,8};*/
       int j = 0;
       while (!q.isEmpty())
       {  System.out.println("front:   " + q.front());    // prova metodo front()
